@@ -15,5 +15,4 @@ app.use('/', indexRouter);
 app.use('/main', mainRouter);
 
 useErrorHandlers(app);
-
 module.exports = app;
