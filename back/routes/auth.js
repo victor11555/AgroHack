@@ -4,8 +4,9 @@ const bcrypt = require('bcrypt');
 const router = express.Router();
 
 const Supplier = require('../models/supplier');
-const Consumers = require('../models/consumers');
+const Consumer = require('../models/consumer');
 const Order = require('../models/order');
+const Offer = require('../models/offer');
 
 const saltRounds = 10;
 

@@ -3,8 +3,9 @@ const express = require('express');
 const router = express.Router();
 
 const Supplier = require('../models/supplier');
-const Consumers = require('../models/consumers');
+const Consumer = require('../models/consumer');
 const Order = require('../models/order');
+const Offer = require('../models/offer');
 
 router.get('/', async (req, res, next) => {
 
