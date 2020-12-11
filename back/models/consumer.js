@@ -4,6 +4,10 @@ const consumerSchema = new mongoose.Schema({
   username: { type: String, unique: true, required: true },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
+  telephone:{type:Number, required:true},
+  address: [{type: Number, required:true}],
+  orders:[{type: Schema.Types.ObjectId,
+    ref:'order'}]
 });
 
 module.exports = mongoose.model('Consumer', consumerSchema);
