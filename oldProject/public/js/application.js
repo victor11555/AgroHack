@@ -15,7 +15,7 @@ forms.forEach((element) => {
       event.target.parentElement.classList = [];
       event.target.parentElement.innerHTML = '';
     } else {
-      alert('SignUp or Login by Client');
+      alert('SignUp or LoginPage by Client');
     }
   });
 });
