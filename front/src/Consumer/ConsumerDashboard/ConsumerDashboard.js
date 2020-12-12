@@ -1,29 +1,28 @@
-import React from 'react'
-
-export default function ConsumerDashboard(e) {
-
-  const userName = e.target
-  return (
-    <div>
-
-    </div>
-  )
-}
-
-/*
-const mongoose = require('mongoose');
-
-const consumerSchema = new mongoose.Schema({
-  username: { type: String, unique: true, required: true },
-  email: { type: String, unique: true, required: true },
-  password: { type: String, required: true },
-  telephone:{type:Number, required:true},
-  address: [{type: Number, required:true}],
-  orders:[{type: mongoose.Schema.Types.ObjectId,
-    ref:'order'}]
-});
-
-module.exports = mongoose.model('Consumer', consumerSchema);
-
- */
-
+// import React from 'react';
+// import { useEffect } from 'react'
+// import { loginURL } from '../../utils/urls';
+//
+// export default function ConsumerDashboard() {
+//   const id = localStorage.user_id;
+//   useEffect(() => {
+//     fetch('http://localhost:4000/consumer', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type' :'Application/json'
+//       },
+//       body: JSON.stringify({id})
+//     })
+//       .then(res => res.json())
+//       .then(consumer => console.log(consumer))
+//   },[])
+//
+//
+// }
+//   return (
+//     <div>
+//       <div>
+//
+//       </div>
+//     </div>
+//   )
+// }

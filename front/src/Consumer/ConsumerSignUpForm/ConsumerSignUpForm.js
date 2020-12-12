@@ -4,7 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 export default function ConsumerSignUpForm(){
   const submitHandler = (e) => {
     e.preventDefault();
-    const userName = e.target.children[0].children[1].value;
+    const username = e.target.children[0].children[1].value;
     const email = e.target.children[1].children[1].value;
     const password = e.target.children[2].children[1].value;
     const telephone = e.target.children[3].children[1].value;
@@ -15,7 +15,7 @@ export default function ConsumerSignUpForm(){
       headers: {
         'Content-type':'Application/json'
       },
-      body: JSON.stringify({userName, email, password, telephone, address, role: 'consumer'})
+      body: JSON.stringify({username, email, password, telephone, address, role: 'consumer'})
     })
       .then(res => res.json())
       .then(data => console.log(data))

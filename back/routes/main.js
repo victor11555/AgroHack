@@ -19,7 +19,7 @@ router.get('/proposals', async (req, res, next) => {
 
 });
 
-router.get('/suppliers', async (req, res, next) => {
+router.get('/supplier', async (req, res, next) => {
 
 });
 module.exports = router;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ConsumerSignUpForm from '../../Consumer/ConsumerSignUpForm/ConsumerSignUpForm';
 import SupplierSignUpForm from '../../Supplier/SupplierSignUpForm/SupplierSignUpForm';
-function SignUp(props) {
+function SignUpPage(props) {
   const [state, setState] = useState(true);
   return (
     <>
@@ -16,4 +16,4 @@ function SignUp(props) {
   );
 }
 
-export default SignUp;
+export default SignUpPage;

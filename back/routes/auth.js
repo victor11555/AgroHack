@@ -8,7 +8,7 @@ const Consumer = require('../models/consumer');
 const Order = require('../models/order');
 const Offer = require('../models/offer');
 
-const saltRounds = 10;
+const saltRounds = 12;
 
 router.get('/logout', async (req, res, next) => {
 
@@ -20,9 +20,9 @@ router.post('/login', async (req, res, next) => {
   } = req.body;
   let user;
   if(role === 'supplier') {
-    user = await Supplier.find({email});
+    user = await Supplier.findOne({email});
   } else {
-    user = await Consumer.find({email});
+    user = await Consumer.findOne({email});
   }
   if (user && (await bcrypt.compare(password, user.password))) {
     // create session
