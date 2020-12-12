@@ -12,7 +12,7 @@ export default function ConsumerSignUpForm(){
     const email = e.target.children[1].children[1].value;
     const password = e.target.children[2].children[1].value;
     const telephone = e.target.children[3].children[1].value;
-    const address = e.target.children[4].children[1].value;
+    const address = e.target.children[4].children[1].value.split(' ');
 
     fetch(signUpURL, {
       method: 'POST',

@@ -7,7 +7,8 @@ const offerSchema = new mongoose.Schema({
   // массив заказов, которые есть у компании
   orders:[{type: mongoose.Schema.Types.ObjectId,
     ref:'order'}],
-  place:[{type:Number, required:true}]
+  address:[{type:Number, required:true}],
+  description:{ type: String, unique: true, required: true }
 });
 
 module.exports = mongoose.model('Offer', offerSchema);

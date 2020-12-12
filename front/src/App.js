@@ -10,14 +10,6 @@ import {useEffect} from 'react';
 import {showProposalsAC} from './redux/actionCreator';
 
 function App() {
-
-  const dispatch = useDispatch()
-  useEffect(()=>{
-    fetch('http://localhost:4000/proposals')
-      .then(res => res.json())
-      .then(proposalsList => dispatch(showProposalsAC(proposalsList)))
-  },[])
-
   return (
     <>
         <NavBar />

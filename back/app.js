@@ -8,14 +8,14 @@ const useErrorHandlers = require('./middleware/error-handlers');
 
 const mainRouter = require('./routes/main');
 const authRouter = require('./routes/auth');
-const ordersRouter = require('./routes/orders');
+const offerRouter = require('./routes/offer');
 
 
 useMiddleware(app);
 
-app.use('/', mainRouter);
+app.use('/main', mainRouter);
 app.use('/auth', authRouter);
-app.use('/orders', ordersRouter);
+app.use('/offer', offerRouter);
 
 useErrorHandlers(app);
 

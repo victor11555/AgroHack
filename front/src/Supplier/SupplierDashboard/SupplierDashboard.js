@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import {Tabs, Tab, ListGroup, Dropdown} from 'react-bootstrap'
-
-
+import {Tabs, Tab, ListGroup, Dropdown} from 'react-bootstrap';
+import Offer from '../../Offer/Offer';
+import OfferForm from '../../Offer/OfferForm';
+import OrderForm from '../../Order/OrderForm';
 
 export default function SupplierDashboard() {
-
+  const [stateOffer,setStateOffer] = useState(false)
+  const [stateOrder,setStateOrder] = useState(false)
   const { user } = useSelector(store => store.auth);
+
   return (
     <div>
       {/*Показывает профиль*/}
@@ -16,28 +19,23 @@ export default function SupplierDashboard() {
         <ListGroup.Item>Company: {user.company}</ListGroup.Item>
         <ListGroup.Item>Email: {user.email}</ListGroup.Item>
         <ListGroup.Item>Telephone: {user.telephone}</ListGroup.Item>
+
         <ListGroup.Item>
-          {/*показывает названия предложений компаний*/}
-          <Dropdown>
-          <Dropdown.Toggle id="dropdown-basic">
-            My Offers
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Item href="/offers/">{user.offers[0]}</Dropdown.Item>
-            <Dropdown.Item href="/offers">{user.offers[1]}</Dropdown.Item>
-            <Dropdown.Item href="/offers/">{user.offers[2]}</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+          {user.offers.map(el=> (
+          <>
+            <Offer id={el}/>
+            <button onClick={() => setStateOrder(!stateOrder)}>Edit & ADD ORDERS </button>
+            {stateOrder ? <OrderForm offerId={el}/> : null}
+          </>
+        )) }
         </ListGroup.Item>
-      </ListGroup>
 
-      {/*кнопки отправки на добавления заказа или предложения*/}
-      <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-        <Tab eventKey="AddOffer" title="">
-          {/*<Offer />*/}
-        </Tab>
-      </Tabs>
-    </div>)
+        <ListGroup.Item>
+          <button onClick={() => setStateOffer(!stateOffer)}>ADD Offer</button>
+          {stateOffer ? <OfferForm/> : null}
+        </ListGroup.Item>
+
+        </ListGroup>
+    </div>
+  )
 }
-
-

@@ -8,7 +8,7 @@ export default function authReducer(state = {}, action) {
       const user = action.payload;
       return { ...state, user };
     case REMOVE_USER:
-      return { ...state, state: {} }; // smth need to complite
+      return { ...state, user: {} };
     default:
       return state;
   }
