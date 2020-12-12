@@ -1,4 +1,5 @@
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import NavBar from './pages/NavBar';
 
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignUp from './pages/SignUp/SignUp';
@@ -6,15 +7,20 @@ import SignUp from './pages/SignUp/SignUp';
 function App() {
   return (
     <>
-      <Switch>
+
+
+        <NavBar />
+
+        <Switch>
+        <Route exact path='/'/>
         {/*<Route path='/'>*/}
         {/*</Route>*/}
         {/*</Route>*/}
         {/*<Route path='/dashboard'>*/}
-        {/*  { 'smth' ? <ConsumerDashboard/> : <SupplierDashboard/> }*/}
+          {/*{ 'smth' ? <ConsumerDashboard/> : <SupplierDashboard/> }*/}
         {/*</Route>*/}
-        <Route exact path='/login' component={LoginPage} />
-        <Route exact path='/signup' component={SignUp} />
+        <Route path='/login' component={LoginPage} />
+        <Route path='/signup' component={SignUp} />
       </Switch>
     </>
   );
