@@ -13,14 +13,12 @@ function App() {
 
         <Switch>
         <Route exact path='/'/>
-
         {/*<Route path='/'>*/}
         {/*</Route>*/}
         {/*</Route>*/}
         {/*<Route path='/dashboard'>*/}
           {/*{ 'smth' ? <ConsumerDashboard/> : <SupplierDashboard/> }*/}
         {/*</Route>*/}
-
         <Route path='/login' component={LoginPage} />
         <Route path='/signup' component={SignUp} />
       </Switch>
