@@ -19,7 +19,10 @@ function App() {
         <Route exact path='/dashboard' component={DashboardPage} />
         <Route exact path='/login' component={LoginPage} />
         <Route exact path='/signup' component={SignUpPage} />
-          <Route path='/proposals' component={Proposals}/>
+
+
+
+        <Route path='/proposals' component={Proposals}/>
       </Switch>
     </>
   );
