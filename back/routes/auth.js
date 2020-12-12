@@ -40,6 +40,7 @@ router.post('/signup', async (req, res, next) => {
   const {
     role, username, email, password, telephone,
   } = req.body;
+  console.log(req.body);
   let user;
   if (role === 'supplier') {
     const { company } = req.body;

@@ -1,61 +1,43 @@
 import React from 'react';
-import {useEffect} from 'react'
-// import {Form, Button} from 'react-bootstrap';
-// import { offerURL } from '../../utils/urls';
+import { useSelector } from 'react-redux';
+import {Tabs, Tab, ListGroup, Dropdown} from 'react-bootstrap'
+
 
 
 export default function SupplierDashboard() {
-  const id = localStorage.user_id;
-  console.log(id);
-  useEffect(() => {
-    fetch('http://localhost:4000/supplier', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'Application/json'
-      },
-      body: JSON.stringify({id})
-    })
-      .then(res => res.json())
-      .then(supplier => console.log(supplier))
-  }, [])
+
+  const { user } = useSelector(store => store.auth);
+  return (
+    <div>
+      {/*Показывает профиль*/}
+      <h3>My Profile</h3>
+      <ListGroup variant="flush">
+        <ListGroup.Item>Username: {user.username}</ListGroup.Item>
+        <ListGroup.Item>Company: {user.company}</ListGroup.Item>
+        <ListGroup.Item>Email: {user.email}</ListGroup.Item>
+        <ListGroup.Item>Telephone: {user.telephone}</ListGroup.Item>
+        <ListGroup.Item>
+          {/*показывает названия предложений компаний*/}
+          <Dropdown>
+          <Dropdown.Toggle id="dropdown-basic">
+            My Offers
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item href="/offers/">{user.offers[0]}</Dropdown.Item>
+            <Dropdown.Item href="/offers">{user.offers[1]}</Dropdown.Item>
+            <Dropdown.Item href="/offers/">{user.offers[2]}</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        </ListGroup.Item>
+      </ListGroup>
+
+      {/*кнопки отправки на добавления заказа или предложения*/}
+      <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+        <Tab eventKey="AddOffer" title="">
+          {/*<Offer />*/}
+        </Tab>
+      </Tabs>
+    </div>)
 }
 
-  // const formHandler = (e) => {
-  //   e.preventDefault();
-  //
-  //
-  //
-  //   fetch(`https://localhost:4000/supplier`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-type':'Application/json'
-  //     },
-  //     body: JSON.stringify({id})
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => console.log(data))
-
-
-  // return(
-
-    // <Form onSubmit={formHandler}>
-    //   <Form.Group controlId="formBasicCompany" >
-    //     <Form.Control type= "text" placeholder="Add company" />
-    //   </Form.Group>
-    //   <Form.Group controlId="formBasicTelephone" >
-    //     <Form.Control type= "tel" placeholder="Add telephone" />
-    //   </Form.Group>
-    //   <Form.Group controlId="formBasicAddress">
-    //     <Form.Control type="text" placeholder="Add an address" />
-    //   </Form.Group>
-    //   <Form.Group controlId="descriptionOffer">
-    //     <Form.Label>Description</Form.Label>
-    //     <Form.Control as="textarea" rows={3} />
-    //   </Form.Group>
-    //   <Button variant="primary" type="submit">
-    //       Set offer
-    //   </Button>
-    // </Form>
-  // )
-// }}
 

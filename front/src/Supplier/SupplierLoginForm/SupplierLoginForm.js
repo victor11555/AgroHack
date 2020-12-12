@@ -8,7 +8,6 @@ export default function SupplierLoginForm() {
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
-
     const email = e.target.children[0].children[1].value;
     const password = e.target.children[1].children[1].value;
 

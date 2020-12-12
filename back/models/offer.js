@@ -7,7 +7,6 @@ const offerSchema = new mongoose.Schema({
   // массив заказов, которые есть у компании
   orders:[{type: mongoose.Schema.Types.ObjectId,
     ref:'order'}],
-  price: {type: Number, required:true},
   place:[{type:Number, required:true}]
 });
 

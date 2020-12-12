@@ -8,6 +8,7 @@ const supplierSchema = new mongoose.Schema({
   telephone:{ type:Number, required:true },
   offers:[{type: mongoose.Schema.Types.ObjectId,
     ref:'offer'}],
+  role: {type: String, required: true, default: 'supplier'},
 });
 
 module.exports = mongoose.model('Supplier', supplierSchema);

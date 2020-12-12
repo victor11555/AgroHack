@@ -7,7 +7,8 @@ const consumerSchema = new mongoose.Schema({
   telephone:{type:Number, required:true},
   address: [{type: Number, required:true}],
   orders:[{type: mongoose.Schema.Types.ObjectId,
-    ref:'order'}]
+    ref:'order'}],
+  role: {type: String, required: true, default: 'consumer'},
 });
 
 module.exports = mongoose.model('Consumer', consumerSchema);

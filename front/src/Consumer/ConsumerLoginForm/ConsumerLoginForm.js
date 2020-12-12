@@ -1,13 +1,17 @@
 import React from 'react'
 import { Button, Form } from 'react-bootstrap';
+import { AUTHENTICATE_USER } from '../../redux/actionTypes';
+import { useDispatch } from 'react-redux';
+import { loginURL } from '../../utils/urls';
 
 export default function ConsumerLoginForm() {
+  const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
     const email = e.target.children[0].children[1].value;
     const password = e.target.children[1].children[1].value;
 
-    fetch('http://localhost:4000/auth/login', {
+    fetch(loginURL, {
       method: 'POST',
       headers: {
         'Content-type':'Application/json'
@@ -15,7 +19,17 @@ export default function ConsumerLoginForm() {
       body: JSON.stringify({ email, password, role: 'consumer'})
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(response => {
+        if (!response.success) console.log(response.message);
+        else {
+          const { user } = response;
+          localStorage.setItem('user_id', user._id.toString());
+          return dispatch({
+            type: AUTHENTICATE_USER,
+            payload: user,
+          });
+        }
+      });
   }
   return (
     <Form onSubmit={submitHandler}>
