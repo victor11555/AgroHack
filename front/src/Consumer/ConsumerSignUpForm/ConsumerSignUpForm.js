@@ -1,16 +1,31 @@
 import React from 'react'
 import { Button, Form } from 'react-bootstrap';
 
-export default function ConsumerSignUpForm() {
+export default function ConsumerSignUpForm(){
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const userName = e.target.children[0].children[1].value;
+    const email = e.target.children[1].children[1].value;
+    const password = e.target.children[2].children[1].value;
+    const telephone = e.target.children[3].children[1].value;
+    const address = e.target.children[4].children[1].value;
+
+    fetch('http://localhost:4000/auth/signup', {
+      method: 'POST',
+      headers: {
+        'Content-type':'Application/json'
+      },
+      body: JSON.stringify({userName, email, password, telephone, address, role: 'consumer'})
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
   }
+
   return (
     <Form onSubmit={submitHandler}>
       <Form.Group controlId="formBasicUserName">
         <Form.Label>Username</Form.Label>
-        <Form.Control type="text" placeholder="Enter your name" required pattern="^[a-zA-Z](.[a-zA-Z0-9_-]*)$" />
+        <Form.Control  type="text" placeholder="Enter your name" required pattern="^[a-zA-Z](.[a-zA-Z0-9_-]*)$" />
       </Form.Group>
       {/**/}
       <Form.Group controlId="formBasicEmail">

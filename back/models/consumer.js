@@ -6,7 +6,7 @@ const consumerSchema = new mongoose.Schema({
   password: { type: String, required: true },
   telephone:{type:Number, required:true},
   address: [{type: Number, required:true}],
-  orders:[{type: Schema.Types.ObjectId,
+  orders:[{type: mongoose.Schema.Types.ObjectId,
     ref:'order'}]
 });
 

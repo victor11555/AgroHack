@@ -4,7 +4,18 @@ import { Button, Form } from 'react-bootstrap';
 export default function ConsumerLoginForm() {
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const email = e.target.children[0].children[1].value;
+    const password = e.target.children[1].children[1].value;
+
+    fetch('http://localhost:4000/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-type':'Application/json'
+      },
+      body: JSON.stringify({ email, password, role: 'consumer'})
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
   }
   return (
     <Form onSubmit={submitHandler}>

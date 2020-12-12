@@ -6,7 +6,7 @@ const orderSchema = new mongoose.Schema({
     description:{type:String, required:true},
     count:{type:Number, required:true},
     price:{type:Number, required:true},
-    supplier:{type: Schema.Types.ObjectId,
+    supplier:{type: mongoose.Schema.Types.ObjectId,
       ref:'supplier'},
     place:[{type:Number, required:true}]
 });

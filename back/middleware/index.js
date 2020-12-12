@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const path = require('path');
+const cors = require('cors');
 const FileStore = require('session-file-store')(session);
 const { cookiesCleaner } = require('./auth');
 const dbConnect = require('./db-connect');
@@ -22,11 +23,12 @@ module.exports = function useMiddleware(app) {
       resave: true,
       saveUninitialized: false,
       cookie: {
-        expires: 1000*60*60*10, // cookies lives 5 min
+        expires: 1000 * 60 * 60, // cookies lives 1 hour
         httpOnly: true,
       },
     }),
   );
+  app.use(cors());
 
   app.use(cookiesCleaner);
 };
