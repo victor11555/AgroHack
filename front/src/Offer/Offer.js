@@ -18,13 +18,19 @@ export default function Offer({ id }) {
       })
   }, [tmp])
 
+  const ourStyle = {
+    display: 'flex',
+    maxWidth: '100vh',
+    flexFlow: 'row wrap',
+  }
+
   return (
     <>
       <ListGroup variant='flush'>
         <ListGroup.Item>Title: {offer && offer.title}</ListGroup.Item>
         <ListGroup.Item>Description: {offer && offer.description}</ListGroup.Item>
         <ListGroup.Item>Address: {offer && offer.address}</ListGroup.Item>
-        <ListGroup.Item>Orders: {offer && offer.orders.map(el => <Order key={el} id={el} />)}</ListGroup.Item>
+        <ListGroup.Item className={'container'} style={ourStyle}>{offer && offer.orders.map(el => <Order key={el} id={el} />)}</ListGroup.Item>
       </ListGroup>
     </>
   );
