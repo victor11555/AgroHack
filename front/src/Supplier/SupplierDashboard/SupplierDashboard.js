@@ -41,7 +41,7 @@ export default function SupplierDashboard() {
           <>
             <Offer id={el}/>
             <button onClick={() => setStateOrder(!stateOrder)}>Edit & ADD ORDERS </button>
-            {stateOrder ? <OrderForm offerId={el}/> : null}
+            {stateOrder ? <OrderForm key={el} offerId={el}/> : null}
           </>
         )) }
         </ListGroup.Item>

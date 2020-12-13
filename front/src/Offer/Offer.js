@@ -17,13 +17,14 @@ export default function Offer({ id }) {
         tmp = 1;
       })
   }, [tmp])
+
   return (
     <>
       <ListGroup variant='flush'>
         <ListGroup.Item>Title: {offer && offer.title}</ListGroup.Item>
         <ListGroup.Item>Description: {offer && offer.description}</ListGroup.Item>
         <ListGroup.Item>Address: {offer && offer.address}</ListGroup.Item>
-        <ListGroup.Item>Orders: {offer && offer.orders.map(el => <Order id={el} />)}</ListGroup.Item>
+        <ListGroup.Item>Orders: {offer && offer.orders.map(el => <Order key={el} id={el} />)}</ListGroup.Item>
       </ListGroup>
     </>
   );

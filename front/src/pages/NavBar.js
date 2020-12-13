@@ -1,14 +1,18 @@
-import { Link } from 'react-router-dom';
+import {Navbar, Nav} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 function NavBar() {
+
+  const ourStyle ={color: 'white'}
   return (
-    <>
-      <Link to='/'>Home</Link>
-      <Link to='/login'>Log In</Link>
-      <Link to='/signup'>Sign Up</Link>
-      <Link to='/dashboard'>Dashboard</Link>
-      <Link to='/main'>Main</Link>
-    </>
+  <Navbar bg="primary" variant="dark">
+    <Navbar.Brand href="/main">Agro App</Navbar.Brand>
+    <Nav className="mr-auto">
+      <Link style={ourStyle} to="/login">Log In</Link>
+      <Link style={ourStyle} to="/signup">Sign Up</Link>
+      <Link style={ourStyle} to="/dashboard">Dashboard</Link>
+    </Nav>
+  </Navbar>
   );
 }
 

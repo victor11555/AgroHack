@@ -16,16 +16,20 @@ export default function Order({id}) {
       });
   },[tmp])
 
+  const ourStyle = {
+    border: 'solid 1px black',
+    width: '300px',
+  }
+
   return (
-    <>
-      <ListGroup variant="flush">
+      <ListGroup style={ourStyle} variant="flush">
         <ListGroup.Item>Title: {order && order.title}</ListGroup.Item>
         <ListGroup.Item>Description: {order && order.description}</ListGroup.Item>
         <ListGroup.Item>Count: {order && order.count}</ListGroup.Item>
         <ListGroup.Item>Price: {order && order.price}</ListGroup.Item>
         <ListGroup.Item>Address: {order && order.address}</ListGroup.Item>
+        <ListGroup.Item><button>Buy</button></ListGroup.Item>
       </ListGroup>
-    </>
   )
 }
 
