@@ -4,7 +4,8 @@ export default function proposalsReducer(state = {}, action) {
   // console.log(action.payload);
   switch (action.type) {
     case SHOW_PROPOSALS:
-      return //[{ ...state, action.payload }];
+      const mapOffer = action.payload;
+      return [{ ...state, mapOffer }];
     default:
       return state;
   }

@@ -3,17 +3,19 @@ import { useContext } from 'react';
 import Order from '../../Order/Order';
 import { useSelector } from 'react-redux';
 import { mainURL } from '../../utils/urls';
+import GetMap from '../../GetMap/GetMap'
 
 function MainPage() {
-  const { user } = useSelector(store => store)
+  // const { user } = useSelector(store => store)
 
-  let offers;
-  fetch(mainURL)
-    .then(res => res.json())
-    .then(data => offers = data)
+  // let offers;
+  // fetch(mainURL)
+  //   .then(res => res.json())
+  //   .then(data => offers = data)
   return (
     <>
-      {offers.map((el) => )}
+      {/*{offers.map((el) => )}*/}
+      <GetMap />
     </>
   );
 }
