@@ -1,10 +1,10 @@
 import React from 'react';
-import {Form, Button} from 'react-bootstrap'
+import { Form } from 'react-bootstrap';
 import { addOrderURL } from '../utils/urls';
 import { AUTHENTICATE_USER } from '../redux/actionTypes';
 import { useDispatch, useSelector } from 'react-redux';
 
-export default function OrderForm({offerId}) {
+export default function OrderForm({ offerId }) {
 
   const { user } = useSelector(store => store.auth);
   const dispatch = useDispatch();
@@ -20,9 +20,9 @@ export default function OrderForm({offerId}) {
     fetch(addOrderURL, {
       method: 'POST',
       headers: {
-        'Content-type': 'Application/json'
+        'Content-type': 'Application/json',
       },
-      body: JSON.stringify({ title, count, address, description, price, offerId, supplier })
+      body: JSON.stringify({ title, count, address, description, price, offerId, supplier }),
     })
       .then(res => res.json())
       .then(response => {
@@ -35,27 +35,28 @@ export default function OrderForm({offerId}) {
               payload: user,
             });
           }
-        }
-      )}
+        },
+      );
+  };
 
   return (
     <Form onSubmit={formHandler}>
-      <Form.Group controlId="formBasicTitle">
-        <Form.Control type="text" placeholder="Add an title of order" />
+      <Form.Group controlId='formBasicTitle'>
+        <Form.Control type='text' placeholder='Add an title of order' />
       </Form.Group>
-      <Form.Group controlId="formBasicCount">
-        <Form.Control type="number" placeholder="Add an count" />
+      <Form.Group controlId='formBasicCount'>
+        <Form.Control type='number' placeholder='Add an count' />
       </Form.Group>
-      <Form.Group controlId="formBasicAddress">
-        <Form.Control type="text" placeholder="Add an address" />
+      <Form.Group controlId='formBasicAddress'>
+        <Form.Control type='text' placeholder='Add an address' />
       </Form.Group>
-      <Form.Group controlId="descriptionOffer">
-        <Form.Control as="textarea" rows={3} />
+      <Form.Group controlId='descriptionOffer'>
+        <Form.Control as='textarea' rows={3} />
       </Form.Group>
-      <Form.Group controlId="priceOrder">
-        <Form.Control type="number" placeholder="Add a price"/>
+      <Form.Group controlId='priceOrder'>
+        <Form.Control type='number' placeholder='Add a price' />
       </Form.Group>
-      <button variant="primary" type="submit">Set order</button>
+      <button variant='primary' type='submit'>Set order</button>
     </Form>
-  )
+  );
 }

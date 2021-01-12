@@ -3,16 +3,15 @@ const express = require('express');
 const router = express.Router();
 
 const Supplier = require('../models/supplier');
-const Consumer = require('../models/consumer');
 const Order = require('../models/order');
 const Offer = require('../models/offer');
 
 router.get('/new', async (req, res, next) => {
 
-})
+});
 
 router.post('/addOffer', async (req, res, next) => {
-  const { title, supplier, address, description} = req.body;
+  const { title, supplier, address, description } = req.body;
   const user = await Supplier.findById(supplier);
   const offer = new Offer({
     title,
@@ -20,16 +19,15 @@ router.post('/addOffer', async (req, res, next) => {
     address,
     description,
     orders: [],
-  })
-  await offer.save()
+  });
+  await offer.save();
   user.offers.push(offer.id);
   await user.save();
-  // res.json({user})
-  res.json({success: true, user}).status(200);
-})
+  res.json({ success: true, user }).status(200);
+});
 
 router.post('/addOrder', async (req, res, next) => {
-  const { title, count, address, description, price, offerId, supplier} = req.body;
+  const { title, count, address, description, price, offerId, supplier } = req.body;
   const offer = await Offer.findById(offerId);
   const user = await Supplier.findById(supplier);
   const order = new Order({
@@ -38,31 +36,11 @@ router.post('/addOrder', async (req, res, next) => {
     price,
     address,
     description,
-  })
-  await order.save()
+  });
+  await order.save();
   offer.orders.push(order.id);
   await offer.save();
-  res.json({success: true, user}).status(200);
-})
-
-router
-
-  .route('/:id')
-
-  .get(async (req, res, next) => {
-
-  })
-
-  .put(async (req, res, next) => {
-
-  })
-
-  .delete(async (req, res, next) => {
-
-  })
-
-router.get('/:id/edit', async (req, res, next) => {
-
-})
+  res.json({ success: true, user }).status(200);
+});
 
 module.exports = router;

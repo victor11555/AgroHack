@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { offerURL } from '../utils/urls';
 import { ListGroup } from 'react-bootstrap';
 import Order from '../Order/Order';
-import { useSelector } from 'react-redux';
 
 export default function Offer({ id }) {
   const [offer, setOffer] = useState(null);
@@ -13,16 +12,16 @@ export default function Offer({ id }) {
     fetch(url)
       .then(res => res.json())
       .then(response => {
-        setOffer(response.offer)
+        setOffer(response.offer);
         tmp = 1;
-      })
-  }, [tmp])
+      });
+  }, [tmp]);
 
   const ourStyle = {
     display: 'flex',
     maxWidth: '100vh',
     flexFlow: 'row wrap',
-  }
+  };
 
   return (
     <>
@@ -30,7 +29,8 @@ export default function Offer({ id }) {
         <ListGroup.Item>Title: {offer && offer.title}</ListGroup.Item>
         <ListGroup.Item>Description: {offer && offer.description}</ListGroup.Item>
         <ListGroup.Item>Address: {offer && offer.address}</ListGroup.Item>
-        <ListGroup.Item className={'container'} style={ourStyle}>{offer && offer.orders.map(el => <Order key={el} id={el} />)}</ListGroup.Item>
+        <ListGroup.Item className={'container'} style={ourStyle}>{offer && offer.orders.map(el => <Order key={el}
+                                                                                                         id={el} />)}</ListGroup.Item>
       </ListGroup>
     </>
   );

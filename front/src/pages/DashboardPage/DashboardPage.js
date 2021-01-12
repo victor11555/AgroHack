@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import SupplierDashboard from '../../Supplier/SupplierDashboard/SupplierDashboard';
 import ConsumerDashboard from '../../Consumer/ConsumerDashboard/ConsumerDashboard';

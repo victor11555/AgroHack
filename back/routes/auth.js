@@ -5,8 +5,6 @@ const router = express.Router();
 
 const Supplier = require('../models/supplier');
 const Consumer = require('../models/consumer');
-const Order = require('../models/order');
-const Offer = require('../models/offer');
 
 const saltRounds = 12;
 
@@ -19,20 +17,18 @@ router.post('/login', async (req, res, next) => {
     role, email, password,
   } = req.body;
   let user;
-  if(role === 'supplier') {
-    user = await Supplier.findOne({email});
+  if (role === 'supplier') {
+    user = await Supplier.findOne({ email });
   } else {
-    user = await Consumer.findOne({email});
+    user = await Consumer.findOne({ email });
   }
   if (user && (await bcrypt.compare(password, user.password))) {
-    // create session
-    res.json({success: true, user});
-  } if (user) {
-    //wrong password
-    res.json({success: false , message: 'wrong password'});
+    res.json({ success: true, user });
+  }
+  if (user) {
+    res.json({ success: false, message: 'wrong password' });
   } else {
-    // no such user
-    res.json({success: false , message: 'no such user'});
+    res.json({ success: false, message: 'no such user' });
   }
 });
 
@@ -45,7 +41,7 @@ router.post('/signup', async (req, res, next) => {
     const { company } = req.body;
     if (await Supplier.findOne({ username }) && await Supplier.findOne({ email })) {
       // already have such user
-      res.json({success: false , message: 'have such user'})
+      res.json({ success: false, message: 'have such user' });
     }
     user = await new Supplier({
       username,
@@ -59,7 +55,7 @@ router.post('/signup', async (req, res, next) => {
     const { address } = req.body;
     if (await Consumer.findOne({ username }) && await Consumer.findOne({ email })) {
       /// already have such user
-      res.json({success: false , message: 'have such user'})
+      res.json({ success: false, message: 'have such user' });
     }
     user = await new Consumer({
       username,
@@ -71,9 +67,7 @@ router.post('/signup', async (req, res, next) => {
     });
   }
   await user.save();
-  // create session
-  res.json({success: true, user}).status(200)
+  res.json({ success: true, user }).status(200);
 });
 
 module.exports = router;
-

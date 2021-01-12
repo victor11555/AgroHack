@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Button} from 'react-bootstrap'
+import { Form } from 'react-bootstrap';
 import { addOfferURL } from '../utils/urls';
 import { useDispatch, useSelector } from 'react-redux';
 import { AUTHENTICATE_USER } from '../redux/actionTypes';
@@ -18,9 +18,9 @@ export default function OfferForm() {
     fetch(addOfferURL, {
       method: 'POST',
       headers: {
-        'Content-type': 'Application/json'
+        'Content-type': 'Application/json',
       },
-      body: JSON.stringify({ title, supplier, address, description})
+      body: JSON.stringify({ title, supplier, address, description }),
     })
       .then(res => res.json())
       .then(response => {
@@ -33,21 +33,22 @@ export default function OfferForm() {
               payload: user,
             });
           }
-        }
-      )}
+        },
+      );
+  };
 
-    return (
-      <Form onSubmit={formHandler}>
-        <Form.Group controlId="formBasicTitle">
-          <Form.Control type="text" placeholder="Add an title of offer" />
-        </Form.Group>
-        <Form.Group controlId="formBasicAddress">
-          <Form.Control type="text" placeholder="Add an address" />
-        </Form.Group>
-        <Form.Group controlId="descriptionOffer">
-          <Form.Control as="textarea" rows={3} />
-        </Form.Group>
-        <button variant="primary" type="submit">Set offer</button>
-      </Form>
-    )
-  }
+  return (
+    <Form onSubmit={formHandler}>
+      <Form.Group controlId='formBasicTitle'>
+        <Form.Control type='text' placeholder='Add an title of offer' />
+      </Form.Group>
+      <Form.Group controlId='formBasicAddress'>
+        <Form.Control type='text' placeholder='Add an address' />
+      </Form.Group>
+      <Form.Group controlId='descriptionOffer'>
+        <Form.Control as='textarea' rows={3} />
+      </Form.Group>
+      <button variant='primary' type='submit'>Set offer</button>
+    </Form>
+  );
+}

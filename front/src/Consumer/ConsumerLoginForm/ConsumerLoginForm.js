@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { AUTHENTICATE_USER } from '../../redux/actionTypes';
 import { useDispatch } from 'react-redux';
@@ -14,9 +14,9 @@ export default function ConsumerLoginForm() {
     fetch(loginURL, {
       method: 'POST',
       headers: {
-        'Content-type':'Application/json'
+        'Content-type': 'Application/json',
       },
-      body: JSON.stringify({ email, password, role: 'consumer'})
+      body: JSON.stringify({ email, password, role: 'consumer' }),
     })
       .then(res => res.json())
       .then(response => {
@@ -30,26 +30,27 @@ export default function ConsumerLoginForm() {
           });
         }
       });
-  }
+  };
   return (
     <Form onSubmit={submitHandler}>
-      <Form.Group controlId="formBasicEmail">
+      <Form.Group controlId='formBasicEmail'>
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" required pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+"/>
-        <Form.Text className="text-muted">
+        <Form.Control type='email' placeholder='Enter email' required
+                      pattern='[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+' />
+        <Form.Text className='text-muted'>
           We'll never share your email with anyone else.
         </Form.Text>
       </Form.Group>
 
-      <Form.Group controlId="formBasicPassword">
+      <Form.Group controlId='formBasicPassword'>
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" required/>
+        <Form.Control type='password' placeholder='Password' required />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button variant='primary' type='submit'>
         Submit
       </Button>
     </Form>
-  )
+  );
 }
 

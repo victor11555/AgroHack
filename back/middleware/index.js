@@ -2,7 +2,6 @@ const express = require('express');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const path = require('path');
 const cors = require('cors');
 const FileStore = require('session-file-store')(session);
 const { cookiesCleaner } = require('./auth');
